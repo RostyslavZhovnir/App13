@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Geolocator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,26 @@ namespace App13
            //await DisplayAlert("Запрос принят", "Ожидайте ответ от диспетчера", "Подтвердить");
            await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
         }
+
+        private async void OnButtonClicked(object sender, EventArgs e)
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy=100;
+
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
+
+
+            LogitudeLabel.Text=position.Longitude.ToString();
+
+            LatitudeLabel.Text=position.Latitude.ToString();
+
+
+
+
+        }
+
+        
+     
+
     }
 }
