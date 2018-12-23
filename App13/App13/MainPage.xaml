@@ -10,12 +10,16 @@
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
 
+        <Label x:Name="currentLocationName"   
+                       FontSize="15"/>
+        <Label x:Name="currentLocation"   
+                       FontSize="15"/>
 
 
 
 
 
-        <Label Text="Longitude"  
+        <!--<Label Text="Longitude"  
                        FontSize="10"  
                       />
         <Label x:Name="LogitudeLabel"  
@@ -24,11 +28,10 @@
                        FontSize="10"  
                         />
         <Label x:Name="LatitudeLabel"   
-                       FontSize="10"/>
+                       FontSize="10"/>-->
 
 
-
-
+        
 
         <Button x:Name="readyForPickup" Text="Онлайн"  BackgroundColor="Green" TextColor="White"/>
         <Button x:Name="offline" Text="Офлайн" BackgroundColor="red" TextColor="White"/>

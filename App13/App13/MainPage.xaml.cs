@@ -33,25 +33,24 @@ namespace App13
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy=100;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
-            LogitudeLabel.Text=position.Longitude.ToString();
-            LatitudeLabel.Text=position.Latitude.ToString();
-
-            //var adress = locator.GetAddressesForPositionAsync(new Position(position.Longitude, position.Latitude));
+            //LogitudeLabel.Text=position.Longitude.ToString();
+            //LatitudeLabel.Text=position.Latitude.ToString();
+                       
             Geocoder geocoder = new Geocoder();
-            var pos = new Xamarin.Forms.Maps.Position(position.Latitude,position.Longitude);
+            var pos = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
 
             var possibleAddresses = await geocoder.GetAddressesForPositionAsync(pos);
 
-            LogitudeLabel.Text=possibleAddresses.FirstOrDefault();
-           
+            currentLocation.Text=possibleAddresses.FirstOrDefault();
+            currentLocationName.Text="Ваше местоположение:";
 
 
 
 
         }
-       
 
-     
+
+
 
     }
 }
