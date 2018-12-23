@@ -1,10 +1,13 @@
 ﻿using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using Xamarin.Forms.Maps;
 
 namespace App13
 {
@@ -24,28 +27,30 @@ namespace App13
 
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
         {
-           //await DisplayAlert("Запрос принят", "Ожидайте ответ от диспетчера", "Подтвердить");
-           await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
-        }
 
-        private async void OnButtonClicked(object sender, EventArgs e)
-        {
+            await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
+
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy=100;
-
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
-
-
             LogitudeLabel.Text=position.Longitude.ToString();
-
             LatitudeLabel.Text=position.Latitude.ToString();
+
+            //var adress = locator.GetAddressesForPositionAsync(new Position(position.Longitude, position.Latitude));
+            Geocoder geocoder = new Geocoder();
+            var pos = new Xamarin.Forms.Maps.Position(position.Latitude,position.Longitude);
+
+            var possibleAddresses = await geocoder.GetAddressesForPositionAsync(pos);
+
+            LogitudeLabel.Text=possibleAddresses.FirstOrDefault();
+           
 
 
 
 
         }
+       
 
-        
      
 
     }

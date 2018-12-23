@@ -23,6 +23,9 @@ namespace App13.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity=this;
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
+
+
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
@@ -32,6 +35,9 @@ namespace App13.Droid
         }
 
 
+       
 
+
+
+        }
     }
-}
