@@ -17,21 +17,34 @@ namespace App13
         {
             InitializeComponent();
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
+            offline.IsVisible=false;
             offline.Clicked+=Offline_Clicked;
+            currentLocationName.Text="Вы Offline";
+            currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
         }
 
         private async void Offline_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Вы Offline", "Спасибо за огромный труд! Поскорее возвращайтесь !!", "Подтвердить");
+            readyForPickup.IsVisible=true;
+            offline.IsVisible=false;
+            currentLocationName.Text="Вы Offline";
+            currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
         }
 
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
         {
 
-            await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
 
+            await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
+            offline.IsVisible=true;
+            readyForPickup.IsVisible=false;
+            currentLocationName.Text="";
+            currentLocation.Text="";
             var locator = CrossGeolocator.Current;
+            
             locator.DesiredAccuracy=100;
+            
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
             //LogitudeLabel.Text=position.Longitude.ToString();
             //LatitudeLabel.Text=position.Latitude.ToString();
