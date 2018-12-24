@@ -11,7 +11,8 @@ namespace App13
         {
             InitializeComponent();
 
-            MainPage=new MainPage();
+            //MainPage=new Login();
+            MainPage=new NavigationPage(new Login());
         }
 
         protected override void OnStart()

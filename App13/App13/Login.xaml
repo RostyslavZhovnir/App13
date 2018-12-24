@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App13.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Bakun Express Load Tracker!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="loginEntry"  Placeholder = "Login" />
+            <Entry x:Name="passwordEntry"  Placeholder = "Password" IsPassword ="True" />
+            <Label x:Name="textLabel" FontSize="Large" />
+            <Button x:Name="login" Text="Login" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+
+        </StackLayout>
+
+       
+    </ContentPage.Content>
+</ContentPage>

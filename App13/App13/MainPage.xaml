@@ -11,12 +11,12 @@
         <Label Text="Welcome to Bakun Express Load Tracker!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" 
-              FontSize="25"  HorizontalTextAlignment="Center" />
+              FontSize="22"  HorizontalTextAlignment="Center" />
 
         <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                       FontSize="20"/>
+                       FontSize="17"/>
         <Label x:Name="currentLocation" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                       FontSize="20"/>
+                       FontSize="17"/>
 
         <Label x:Name="message" HorizontalOptions="Center" HorizontalTextAlignment="Center"
                        FontSize="15"/>

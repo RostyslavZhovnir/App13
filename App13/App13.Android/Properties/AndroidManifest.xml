@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<application android:label="App13.Android" android:icon="@mipmap/icon"></application>
+	<application android:label="Bakun Express load tracker.Android" android:icon="@mipmap/icon"></application>
 </manifest>
