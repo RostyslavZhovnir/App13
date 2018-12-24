@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App13.iOS", "App13\App13.iO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App13.UWP", "App13\App13.UWP\App13.UWP.csproj", "{F574E618-614A-4B01-8914-BF28C827448B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App13", "App13\App13\App13.csproj", "{F8FCAA69-D875-4291-976E-6A1CB0DD169A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App13", "App13\App13\App13.csproj", "{F8FCAA69-D875-4291-976E-6A1CB0DD169A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
