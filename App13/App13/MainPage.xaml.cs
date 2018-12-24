@@ -48,18 +48,26 @@ namespace App13
             var locator = CrossGeolocator.Current;
             
             locator.DesiredAccuracy=100;
-            
-            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
-            //LogitudeLabel.Text=position.Longitude.ToString();
-            //LatitudeLabel.Text=position.Latitude.ToString();
-                       
-            Geocoder geocoder = new Geocoder();
-            var pos = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
+            try {
 
-            var possibleAddresses = await geocoder.GetAddressesForPositionAsync(pos);
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
+                //LogitudeLabel.Text=position.Longitude.ToString();
+                //LatitudeLabel.Text=position.Latitude.ToString();
 
-            currentLocation.Text=possibleAddresses.FirstOrDefault();
-            currentLocationName.Text="Ваше местоположение:";
+                Geocoder geocoder = new Geocoder();
+                var pos = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
+
+                var possibleAddresses = await geocoder.GetAddressesForPositionAsync(pos);
+
+                currentLocation.Text=possibleAddresses.FirstOrDefault();
+                currentLocationName.Text="Ваше местоположение:";
+
+            }
+            catch (Exception) {
+
+                currentLocationName.Text="Нет сигнала GPS";
+            }
+           
            
 
 
