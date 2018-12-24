@@ -2,18 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:App13"
-             x:Class="App13.MainPage">
+             x:Class="App13.MainPage"
+              Title="Welcome to Bakun Express Load Tracker!"
+             >
 
     <StackLayout>
         <!-- Place new controls here -->
         <Label Text="Welcome to Bakun Express Load Tracker!" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand" 
+              FontSize="25"  HorizontalTextAlignment="Center" />
 
-        <Label x:Name="currentLocationName"   HorizontalOptions="Center" 
+        <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                       FontSize="20"/>
+        <Label x:Name="currentLocation" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                       FontSize="20"/>
+
+        <Label x:Name="message" HorizontalOptions="Center" HorizontalTextAlignment="Center"
                        FontSize="15"/>
-        <Label x:Name="currentLocation" HorizontalOptions="Center" 
-                       FontSize="15"/>
+
 
 
 
@@ -34,7 +41,7 @@
 
 
         <Button x:Name="readyForPickup" Text="Готов к загрузке"  BackgroundColor="Green" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-        <Button x:Name="offline" Text="Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+        <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
         
     </StackLayout>
 

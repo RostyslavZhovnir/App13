@@ -20,6 +20,7 @@ namespace App13
             offline.IsVisible=false;
             offline.Clicked+=Offline_Clicked;
             currentLocationName.Text="Вы Offline";
+            message.Text="";
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
         }
 
@@ -30,6 +31,7 @@ namespace App13
             offline.IsVisible=false;
             currentLocationName.Text="Вы Offline";
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+            message.Text="";
         }
 
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
@@ -41,6 +43,8 @@ namespace App13
             readyForPickup.IsVisible=false;
             currentLocationName.Text="";
             currentLocation.Text="";
+            message.Text="Все готово!! Диспетчера ищут грузы для вас в округе 150 миль. Ждите автоматические уведомления на ваш телефон.";
+
             var locator = CrossGeolocator.Current;
             
             locator.DesiredAccuracy=100;
@@ -56,7 +60,7 @@ namespace App13
 
             currentLocation.Text=possibleAddresses.FirstOrDefault();
             currentLocationName.Text="Ваше местоположение:";
-
+           
 
 
 
