@@ -46,11 +46,16 @@ namespace App13
                 var json = JsonConvert.SerializeObject(user);
                 var resp = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, resp).Result;
-
+                
 
                 if (response.StatusCode==HttpStatusCode.OK)
                 {
-                    await Navigation.PushAsync(new MainPage());
+                    
+                    //MainPage mainPage = new MainPage();
+                    await Navigation.PushAsync(new MainPage(loginEntry.Text, passwordEntry.Text));
+                    //mainPage.tempData(loginEntry.Text, passwordEntry.Text);
+                    //await Navigation.PushAsync(mainPage);
+                    
                 }
 
                 else

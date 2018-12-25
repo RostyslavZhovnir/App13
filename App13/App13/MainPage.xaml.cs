@@ -1,8 +1,11 @@
-﻿using Plugin.Geolocator;
+﻿using App13.Models;
+using Newtonsoft.Json;
+using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -13,7 +16,9 @@ namespace App13
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        private string _pass;
+        private string _name;
+        public MainPage(string name, string pass)
         {
             InitializeComponent();
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
@@ -21,6 +26,7 @@ namespace App13
             offline.Clicked+=Offline_Clicked;
             currentLocationName.Text="Вы Offline";
             message.Text="";
+            username.Text="Welcome back, "+name;
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
         }
 
@@ -62,6 +68,7 @@ namespace App13
                 currentLocation.Text=possibleAddresses.FirstOrDefault();
                 currentLocationName.Text="Ваше местоположение:";
 
+
             }
             catch (Exception) {
 
@@ -74,8 +81,7 @@ namespace App13
 
         }
 
-
-
+     
 
     }
 }

@@ -8,10 +8,10 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Bakun Express Load Tracker!" 
+        <Label x:Name="username"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" 
-              FontSize="22"  HorizontalTextAlignment="Center" />
+              FontSize="20"  HorizontalTextAlignment="Center" />
 
         <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center"
                        FontSize="17"/>

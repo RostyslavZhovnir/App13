@@ -8,5 +8,6 @@ namespace App13.Models
     {
         public string name { get; set; }
         public string pass { get; set; }
+        public string location { get; set; }
     }
 }
