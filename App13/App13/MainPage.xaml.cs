@@ -28,6 +28,8 @@ namespace App13
             message.Text="";
             username.Text="Welcome back, "+name;
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+            _name=name;
+            _pass=pass;
         }
 
         private void Offline_Clicked(object sender, EventArgs e)
@@ -67,6 +69,13 @@ namespace App13
 
                 currentLocation.Text=possibleAddresses.FirstOrDefault();
                 currentLocationName.Text="Ваше местоположение:";
+
+                HttpClient client = new HttpClient();
+                var user = new userLogin { name=_name, pass=_pass,location =possibleAddresses.FirstOrDefault() };
+                string url = "http://192.168.0.12:45455/api/users1/";
+                var json = JsonConvert.SerializeObject(user);
+                var resp = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.PostAsync(url, resp).Result;
 
 
             }
