@@ -24,9 +24,9 @@ namespace App13
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
         }
 
-        private async void Offline_Clicked(object sender, EventArgs e)
+        private void Offline_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Вы Offline", "Спасибо за огромный труд! Поскорее возвращайтесь !!", "Подтвердить");
+            // await DisplayAlert("Вы Offline", "Спасибо за огромный труд! Поскорее возвращайтесь !!", "Подтвердить");
             readyForPickup.IsVisible=true;
             offline.IsVisible=false;
             currentLocationName.Text="Вы Offline";
@@ -38,7 +38,7 @@ namespace App13
         {
 
 
-            await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
+            //await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
             offline.IsVisible=true;
             readyForPickup.IsVisible=false;
             currentLocationName.Text="";
