@@ -57,7 +57,7 @@ namespace App13
             readyForPickup.IsVisible=false;
             currentLocationName.Text="";
             currentLocation.Text="";
-            message.Text="Все готово!! Диспетчера ищут грузы для вас в округе 150 миль. Ждите автоматические уведомления на ваш телефон.";
+            message.Text="Все готово!! Система ищет грузы для вас в радиусе 150 миль. Ждите автоматические уведомления на ваш телефон.";
 
             var locator = CrossGeolocator.Current;
             
