@@ -40,6 +40,12 @@ namespace App13
             currentLocationName.Text="Вы Offline";
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
             message.Text="";
+            HttpClient client = new HttpClient();
+            var user = new userLogin { name=_name, pass=_pass, location="USER OFFLINE" };
+            string url = "http://192.168.0.12:45455/api/users1/";
+            var json = JsonConvert.SerializeObject(user);
+            var resp = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = client.PostAsync(url, resp).Result;
         }
 
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
