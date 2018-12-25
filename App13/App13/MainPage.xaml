@@ -13,9 +13,9 @@
            VerticalOptions="CenterAndExpand" 
               FontSize="20"  HorizontalTextAlignment="End" />
 
-        <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center"
+        <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red"
                        FontSize="17"/>
-        <Label x:Name="currentLocation" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+        <Label x:Name="currentLocation" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red"
                        FontSize="17"/>
 
         <Label x:Name="message" HorizontalOptions="Center" HorizontalTextAlignment="Center"
