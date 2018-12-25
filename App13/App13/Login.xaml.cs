@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App13.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -28,21 +30,42 @@ namespace App13
 		{
 			
 
-			HttpClient client = new HttpClient();
+			
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/users1");
+                //HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/users1");
+                //if (response.StatusCode==HttpStatusCode.OK)
+                //{
+                //HttpContent responseContent = response.Content;
+                //var json = await responseContent.ReadAsStringAsync();
+                //await Navigation.PushAsync(new MainPage());
+
+                HttpClient client = new HttpClient();
+                var user = new userLogin { name=loginEntry.Text, pass=passwordEntry.Text };
+                string url = "http://192.168.0.12:45455/api/users1/";
+                var json = JsonConvert.SerializeObject(user);
+                var resp = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.PostAsync(url, resp).Result;
+
+
                 if (response.StatusCode==HttpStatusCode.OK)
                 {
-                    HttpContent responseContent = response.Content;
-                    var json = await responseContent.ReadAsStringAsync();
                     await Navigation.PushAsync(new MainPage());
                 }
 
                 else
                 {
                     loginfail.IsVisible=true;
-                }
+                }  
+
+                   
+                  
+                //}
+
+                //else
+                //{
+                //    loginfail.IsVisible=true;
+                //}
             }
             catch (Exception )
             {
