@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -32,9 +33,23 @@ namespace App13.Droid
             string loadID = result[3];
             string userKey = result[4];
             //App.Current.Navigation.PushAsync(new Notification(msg));
-            App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass,userKey, loadID));
-            
+            App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass, userKey, loadID));
+
             //Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);
+            String channelId = "Default";
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
+            .SetContentTitle("Новый груз возле вас")
+            .SetContentText("Откройте приложение чтобы продолжить!")
+            .SetSmallIcon(Resource.Drawable.abc_btn_radio_material);
+            
+            NotificationManager manager = (NotificationManager)GetSystemService(NotificationService);
+            if (Build.VERSION.SdkInt >= Build.VERSION_CODES.O)
+            {
+                NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.ImportanceDefault);
+                manager.CreateNotificationChannel(channel);
+            }
+            manager.Notify(0, builder.Build());
         }
     }
 

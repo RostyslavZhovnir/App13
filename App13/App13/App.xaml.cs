@@ -5,8 +5,10 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace App13
 {
+    
     public partial class App : Application
     {
+        
         public App()
         {
             InitializeComponent();
@@ -29,5 +31,7 @@ namespace App13
         {
             // Handle when your app resumes
         }
+
+
     }
 }

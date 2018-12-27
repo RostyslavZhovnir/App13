@@ -6,7 +6,7 @@
         <StackLayout>
             <Label x:Name="tit"
                    Text="Новый груз"
-                   FontSize="Large"
+                   FontSize="25"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="RED" FontAttributes="Bold"/>
             
@@ -15,8 +15,8 @@
                 HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
             
             <Entry x:Name="bid"  Placeholder = "Предложыть цену"/>
-            <Button x:Name="submitbid" Text="Отправить"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-            <Button x:Name="cancel" Text="Отмена"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Button x:Name="submitbid" Text="Отправить"   />
+            <Button x:Name="cancel" Text="Отмена"    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
