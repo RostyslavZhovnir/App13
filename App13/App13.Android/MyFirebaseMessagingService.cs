@@ -36,19 +36,24 @@ namespace App13.Droid
             App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass, userKey, loadID));
 
             //Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);
-            String channelId = "Default";
 
+            //Start Notification
+            String channelId = "Default";
+           
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
             .SetContentTitle("Новый груз возле вас")
             .SetContentText("Откройте приложение чтобы продолжить!")
+            .SetAutoCancel(true)
             .SetSmallIcon(Resource.Drawable.abc_btn_radio_material);
             
+
             NotificationManager manager = (NotificationManager)GetSystemService(NotificationService);
             if (Build.VERSION.SdkInt >= Build.VERSION_CODES.O)
             {
                 NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.ImportanceDefault);
                 manager.CreateNotificationChannel(channel);
             }
+
             manager.Notify(0, builder.Build());
         }
     }

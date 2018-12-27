@@ -41,7 +41,8 @@ namespace App13
 
 		private void _submit(object sender, EventArgs e)
 		{
-			this.Navigation.RemovePage(this.Navigation.NavigationStack[1]);
-		}
+			MainPage.bid=true;
+            App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+        }
 	}
 }

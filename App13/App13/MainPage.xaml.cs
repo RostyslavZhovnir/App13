@@ -18,11 +18,14 @@ namespace App13
     {
         private string _pass;
         private string _name;
+        public static bool bid;
         public MainPage(string name, string pass)
         {
             InitializeComponent();
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.IsVisible=false;
+            pending.IsVisible=false;
+
             offline.Clicked+=Offline_Clicked;
             currentLocationName.Text="Вы Offline";
             message.Text="";
@@ -30,6 +33,16 @@ namespace App13
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
             _name=name;
             _pass=pass;
+            if (bid==true)
+            {
+                currentLocationName.Text="Запрос принят!";
+                message.Text="";
+                username.Text=name+", Ваш запрос обрабатывается ";
+                currentLocation.Text="Для отмены звоните диспетчеру";
+                offline.IsVisible=false;
+                readyForPickup.IsVisible=false;
+                pending.IsVisible=true;
+            }
         }
 
         private void Offline_Clicked(object sender, EventArgs e)
