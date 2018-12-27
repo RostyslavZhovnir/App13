@@ -7,7 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
-
+using Firebase.Iid;
+using Android.Util;
+using Android.Nfc;
 
 namespace App13.Droid
 {
@@ -24,7 +26,7 @@ namespace App13.Droid
             LoadApplication(new App());
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity=this;
             Xamarin.FormsMaps.Init(this, savedInstanceState);
-
+           
 
         }
 

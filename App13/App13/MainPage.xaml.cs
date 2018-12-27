@@ -59,7 +59,7 @@ namespace App13
             currentLocation.Text="";
             message.Text="Все готово!! Система ищет грузы для вас в радиусе 150 миль. Ждите автоматические уведомления на ваш телефон.";
 
-            var locator = CrossGeolocator.Current;
+            var locator =  CrossGeolocator.Current;
             
             locator.DesiredAccuracy=100;
             try {
