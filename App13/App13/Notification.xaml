@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App13.Notification">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="tit"
+                   Text="Новый груз"
+                   FontSize="Large"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="RED" FontAttributes="Bold"/>
+            
+            <Label x:Name="message"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+            
+            <Entry x:Name="bid"  Placeholder = "Предложыть цену"/>
+            <Button x:Name="submitbid" Text="Отправить"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Button x:Name="cancel" Text="Отмена"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

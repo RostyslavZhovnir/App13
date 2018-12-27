@@ -11,6 +11,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Firebase.Messaging;
+using Xamarin.Forms;
 
 namespace App13.Droid
 {
@@ -22,7 +23,20 @@ namespace App13.Droid
         public override void OnMessageReceived(RemoteMessage message)
         {
             Log.Debug(TAG, "From: "+message.From);
-            Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);
+
+            var msg = message.Data["message"];
+            string[] result = msg.Split("&&");
+            string messag = result[0];
+            string userName = result[1];
+            string pass = result[2];
+            string loadID = result[3];
+            string userKey = result[4];
+            //App.Current.Navigation.PushAsync(new Notification(msg));
+            App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass,userKey, loadID));
+            
+            //Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);
         }
     }
+
+    
 }
