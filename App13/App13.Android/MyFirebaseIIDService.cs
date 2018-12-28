@@ -22,7 +22,8 @@ namespace App13.Droid
         public override void OnTokenRefresh()
         {
             var refreshedToken = FirebaseInstanceId.Instance.Token;
-            Log.Debug(TAG, "Refreshed token: "+refreshedToken);
+            Login.seckey=refreshedToken;
+           // Log.Debug(TAG, "Refreshed token: "+refreshedToken);
         }
     }
 }

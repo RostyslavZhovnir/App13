@@ -16,6 +16,7 @@ namespace App13
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Login : ContentPage
 	{
+        public static string seckey ;
 		public Login ()
 		{
 			InitializeComponent ();
@@ -36,7 +37,7 @@ namespace App13
              
 
                 HttpClient client = new HttpClient();
-                var user = new userLogin { name=loginEntry.Text, pass=passwordEntry.Text };
+                var user = new userLogin { name=loginEntry.Text, pass=passwordEntry.Text,seckey=seckey };
                 string url = "http://192.168.0.12:45455/api/users1/";
                 var json = JsonConvert.SerializeObject(user);
                 var resp = new StringContent(json, Encoding.UTF8, "application/json");
