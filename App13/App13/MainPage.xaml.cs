@@ -19,6 +19,7 @@ namespace App13
         private string _pass;
         private string _name;
         public static bool bid;
+        public static bool refuse;
         public MainPage(string name, string pass)
         {
             InitializeComponent();
@@ -33,6 +34,16 @@ namespace App13
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
             _name=name;
             _pass=pass;
+            if (refuse==true)
+            {
+                currentLocationName.Text="К сожалению , ваше предложение цены отклонено!!";
+                message.Text="";
+                username.Text="Welcome back, "+name;
+                currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+                offline.IsVisible=false;
+                readyForPickup.IsVisible=true;
+                pending.IsVisible=false;
+            }
             if (bid==true)
             {
                 currentLocationName.Text="Запрос принят!";

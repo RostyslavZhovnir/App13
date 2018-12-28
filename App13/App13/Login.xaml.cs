@@ -33,12 +33,7 @@ namespace App13
 
             try
             {
-                //HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/users1");
-                //if (response.StatusCode==HttpStatusCode.OK)
-                //{
-                //HttpContent responseContent = response.Content;
-                //var json = await responseContent.ReadAsStringAsync();
-                //await Navigation.PushAsync(new MainPage());
+             
 
                 HttpClient client = new HttpClient();
                 var user = new userLogin { name=loginEntry.Text, pass=passwordEntry.Text };
