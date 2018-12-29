@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 using Firebase.Messaging;
 using Xamarin.Forms;
+using static Android.Provider.Contacts;
 
 namespace App13.Droid
 {
@@ -39,11 +40,16 @@ namespace App13.Droid
 
             //Start Notification
             String channelId = "Default";
-           
+            var intent = new Intent(this, typeof(MainActivity));
+            var resultIntent = Android.App.Application.Context.PackageManager.GetLaunchIntentForPackage(Android.App.Application.Context.PackageName);
+            resultIntent.SetAction(intent.Action);
+            resultIntent.SetFlags(ActivityFlags.ClearTop|ActivityFlags.SingleTop);
+            PendingIntent pendingIntent = PendingIntent.GetActivity(Android.App.Application.Context, requestCode: 0, intent: resultIntent, flags: PendingIntentFlags.UpdateCurrent|PendingIntentFlags.OneShot);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
             .SetContentTitle("Новый груз возле вас")
             .SetContentText("Откройте приложение чтобы продолжить!")
             .SetAutoCancel(true)
+            .SetContentIntent(pendingIntent)
             .SetSmallIcon(Resource.Drawable.abc_btn_radio_material);
             
 
