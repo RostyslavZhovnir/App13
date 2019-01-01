@@ -36,7 +36,7 @@ namespace App13
             currentLocationName.Text="Вы Offline";
             message.Text="";
             username.Text="Welcome back, "+name;
-            currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+            currentLocation.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
             _name=name;
             _pass=pass;
             _loadid=loadid;
@@ -44,10 +44,11 @@ namespace App13
             {
                 bid=false;
                 intransit=false;
-                currentLocationName.Text="К сожалению , ваше предложение цены отклонено!!";
-                message.Text="";
-               // username.Text="Welcome back, "+name;
-                currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+                currentLocationName.Text="К сожалению ,"+Environment.NewLine+" ваше предложение цены отклонено!!";
+                //message.Text="";
+                // username.Text="Welcome back, "+name;
+                currentLocation.Text="";
+                message.Text="Для начала работы нажмите "+Environment.NewLine+"'Готов к загрузке'";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=true;
                 pending.IsVisible=false;
@@ -57,9 +58,9 @@ namespace App13
                 intransit=false;
                 refuse=false;
                 currentLocationName.Text="Запрос принят!";
-                message.Text="";
-               // username.Text=name+", Ваш запрос обрабатывается ";
-                currentLocation.Text="Для отмены звоните диспетчеру";
+                currentLocation.Text="";
+                // username.Text=name+", Ваш запрос обрабатывается ";
+                message.Text="Для отмены звоните диспетчеру";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=false;
                 pending.IsVisible=true;
@@ -68,9 +69,10 @@ namespace App13
             {
                 bid=false;
                 refuse=false;
-                message.Text="";
+                currentLocation.Text="";
+
                 //username.Text="Welcome back, "+name;
-                currentLocation.Text="После того как выполните доставку нажмите 'Груз доставлен' ";
+                message.Text="После того как выполните доставку нажмите :"+Environment.NewLine+" 'Доставлено' ";
                 currentLocationName.Text="Запрос подтвержден!!"+Environment.NewLine+" Ожидайте звонка диспетчера в ближайшее время";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=false;
@@ -86,8 +88,9 @@ namespace App13
              delivered.IsVisible=false;
             offline.IsVisible=false;
             orderslist.IsVisible=false;
+
             currentLocationName.Text="Доставка оформленна!";
-            currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+            currentLocation.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
             message.Text="";
             try
             {
@@ -135,8 +138,9 @@ namespace App13
             offline.IsVisible=false;
             orderslist.IsVisible=false;
             currentLocationName.Text="Вы Offline";
-            currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
-            message.Text="";
+            currentLocation.Text="";
+            message.Text="Для начала работы нажмите "+Environment.NewLine+"'Готов к загрузке'";
+           
             HttpClient client = new HttpClient();
             var user = new userLogin { name=_name, pass=_pass, location="USER OFFLINE" };
             string url = "http://192.168.0.12:45455/api/users1/";

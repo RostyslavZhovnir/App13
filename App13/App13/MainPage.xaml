@@ -8,10 +8,12 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label x:Name="username"
+
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <Label x:Name="username"
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" 
-              FontSize="20"  HorizontalTextAlignment="End" />
+           
+              FontSize="17"  HorizontalTextAlignment="End" />
 
         <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red"
                        FontSize="17"/>
@@ -20,7 +22,7 @@
 
         <Label x:Name="message" HorizontalOptions="Center" HorizontalTextAlignment="Center"
                        FontSize="15"/>
-
+        </StackLayout>
 
 
 
@@ -36,7 +38,7 @@
                         />
         <Label x:Name="LatitudeLabel"   
                        FontSize="10"/>-->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
 
             <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
             <Button x:Name="orderslist" Text="Список грузов" BackgroundColor="Green" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
