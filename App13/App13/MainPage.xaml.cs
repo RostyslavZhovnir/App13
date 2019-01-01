@@ -26,7 +26,6 @@ namespace App13
         public MainPage(string name, string pass,string loadid)
         {
             InitializeComponent();
-            
             offline.IsVisible=false;
             pending.IsVisible=false;
             delivered.IsVisible=false;

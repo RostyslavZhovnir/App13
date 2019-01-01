@@ -82,15 +82,19 @@ namespace App13
 
 				if (response.StatusCode==HttpStatusCode.OK)
 				{
+                    MainPage.refuse=false;
+                    MainPage.intransit=false;
 
-					MainPage.bid=true;
+                    MainPage.bid=true;
 					App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass,_loadID));
 
 				}
 
 				else
 				{
-					MainPage.refuse=true;
+                    MainPage.bid=false;
+                    MainPage.intransit=false;
+                    MainPage.refuse=true;
 					App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass,_loadID));
 
 				}
