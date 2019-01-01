@@ -34,33 +34,42 @@ namespace App13.Droid
             string loadID = result[3];
             string userKey = result[4];
             //App.Current.Navigation.PushAsync(new Notification(msg));
-            App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass, userKey, loadID));
-
-            //Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);
-
-            //Start Notification
-            String channelId = "Default";
-            var intent = new Intent(this, typeof(MainActivity));
-            var resultIntent = Android.App.Application.Context.PackageManager.GetLaunchIntentForPackage(Android.App.Application.Context.PackageName);
-            resultIntent.SetAction(intent.Action);
-            resultIntent.SetFlags(ActivityFlags.ClearTop|ActivityFlags.SingleTop);
-            PendingIntent pendingIntent = PendingIntent.GetActivity(Android.App.Application.Context, requestCode: 0, intent: resultIntent, flags: PendingIntentFlags.UpdateCurrent|PendingIntentFlags.OneShot);
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
-            .SetContentTitle("Новый груз возле вас")
-            .SetContentText("Откройте приложение чтобы продолжить!")
-            .SetAutoCancel(true)
-            .SetContentIntent(pendingIntent)
-            .SetSmallIcon(Resource.Drawable.abc_btn_radio_material);
-            
-
-            NotificationManager manager = (NotificationManager)GetSystemService(NotificationService);
-            if (Build.VERSION.SdkInt >= Build.VERSION_CODES.O)
+            if (messag=="InTransit")
             {
-                NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.ImportanceDefault);
-                manager.CreateNotificationChannel(channel);
+                MainPage.refuse=true;
+                App.Current.MainPage=new NavigationPage(new MainPage(userName, pass));
             }
 
-            manager.Notify(0, builder.Build());
+            else
+            {
+                App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass, userKey, loadID));
+
+                //Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);
+
+                //Start Notification
+                String channelId = "Default";
+                var intent = new Intent(this, typeof(MainActivity));
+                var resultIntent = Android.App.Application.Context.PackageManager.GetLaunchIntentForPackage(Android.App.Application.Context.PackageName);
+                resultIntent.SetAction(intent.Action);
+                resultIntent.SetFlags(ActivityFlags.ClearTop|ActivityFlags.SingleTop);
+                PendingIntent pendingIntent = PendingIntent.GetActivity(Android.App.Application.Context, requestCode: 0, intent: resultIntent, flags: PendingIntentFlags.UpdateCurrent|PendingIntentFlags.OneShot);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
+                .SetContentTitle("Новый груз возле вас")
+                .SetContentText("Откройте приложение чтобы продолжить!")
+                .SetAutoCancel(true)
+                .SetContentIntent(pendingIntent)
+                .SetSmallIcon(Resource.Drawable.abc_btn_radio_material);
+
+
+                NotificationManager manager = (NotificationManager)GetSystemService(NotificationService);
+                if (Build.VERSION.SdkInt>=Build.VERSION_CODES.O)
+                {
+                    NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.ImportanceDefault);
+                    manager.CreateNotificationChannel(channel);
+                }
+
+                manager.Notify(0, builder.Build());
+            }
         }
     }
 

@@ -26,26 +26,29 @@ namespace App13
         string tos;
 		public Notification (string msg, string username, string userpass, string userkey, string loadid)
 		{
-			_username=username;
-			_pass=userpass;
-			_secKey=userkey;
-			_loadID=loadid;
-			InitializeComponent ();
-		   submitbid.Clicked+=_submit;
-			cancel.Clicked+=_cancel;
-			direction.Clicked+=_direction;
+            InitializeComponent();
+           
+            
+                _username=username;
+                _pass=userpass;
+                _secKey=userkey;
+                _loadID=loadid;
+                
+                submitbid.Clicked+=_submit;
+                cancel.Clicked+=_cancel;
+                direction.Clicked+=_direction;
 
-			var result = msg.Split("%%".ToCharArray());
-			milestopickup.Text = "Миль до загрузки: "+result[0];
-			from.Text ="From: "+result[2];
-			to.Text ="To: "+result[4];
-			froms = result[2];
-			tos = result[4];
-			weight.Text ="Вес/кольчество: "+result[6];
-		  //totalmiles.Text ="Всего миль: "+result[8];
-			pickupdate.Text="Дата загрузки: "+result[10];
-			deliverydate.Text="Дата доставки: "+result[12];
-
+                var result = msg.Split("%%".ToCharArray());
+                milestopickup.Text="Миль до загрузки: "+result[0];
+                from.Text="From: "+result[2];
+                to.Text="To: "+result[4];
+                froms=result[2];
+                tos=result[4];
+                weight.Text="Вес/кольчество: "+result[6];
+                //totalmiles.Text ="Всего миль: "+result[8];
+                pickupdate.Text="Дата загрузки: "+result[10];
+                deliverydate.Text="Дата доставки: "+result[12];
+            
 
 		}
 
