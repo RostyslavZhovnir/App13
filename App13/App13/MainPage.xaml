@@ -36,14 +36,17 @@
                         />
         <Label x:Name="LatitudeLabel"   
                        FontSize="10"/>-->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
+            <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Button x:Name="orderslist" Text="Список грузов" BackgroundColor="Green" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
 
-
+        </StackLayout>
 
         <Button x:Name="readyForPickup" Text="Готов к загрузке"  BackgroundColor="Green" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-        <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+      
         <Button x:Name="delivered" Text="Доставлено" BackgroundColor="Blue" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-        
+      
         <Button x:Name="pending" Text="Ждите ответа" BackgroundColor="Orange" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
     </StackLayout>
 

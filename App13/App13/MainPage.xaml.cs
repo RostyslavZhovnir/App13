@@ -29,7 +29,7 @@ namespace App13
             offline.IsVisible=false;
             pending.IsVisible=false;
             delivered.IsVisible=false;
-
+            orderslist.IsVisible=false;
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
@@ -85,6 +85,7 @@ namespace App13
             readyForPickup.IsVisible=true;
              delivered.IsVisible=false;
             offline.IsVisible=false;
+            orderslist.IsVisible=false;
             currentLocationName.Text="Доставка оформленна!";
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
             message.Text="";
@@ -132,6 +133,7 @@ namespace App13
             // await DisplayAlert("Вы Offline", "Спасибо за огромный труд! Поскорее возвращайтесь !!", "Подтвердить");
             readyForPickup.IsVisible=true;
             offline.IsVisible=false;
+            orderslist.IsVisible=false;
             currentLocationName.Text="Вы Offline";
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
             message.Text="";
@@ -149,6 +151,7 @@ namespace App13
             
             //await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
             offline.IsVisible=true;
+            orderslist.IsVisible=true;
             readyForPickup.IsVisible=false;
             currentLocationName.Text="";
             currentLocation.Text="";
