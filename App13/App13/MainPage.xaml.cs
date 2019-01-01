@@ -20,6 +20,7 @@ namespace App13
         private string _pass;
         private string _name;
         private string _loadid;
+        private string _adress;
         public static bool bid;
         public static bool refuse;
         public static bool intransit;
@@ -33,6 +34,7 @@ namespace App13
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
+            orderslist.Clicked+=Orderslist_ClickedAsync;
             currentLocationName.Text="Вы Offline";
             
             username.Text="Welcome back, "+name;
@@ -79,6 +81,56 @@ namespace App13
                 delivered.IsVisible=true;
                 pending.IsVisible=false;
             }
+
+        }
+
+        private async void Orderslist_ClickedAsync(object sender, EventArgs e)
+        {
+        
+
+
+            try
+            {
+
+                // HttpClient client = new HttpClient();
+                //var makebid = new bid { userName=_name, userKey=_pass, currentbid="Delivered", loadID=_loadid };
+                // string url = "http://192.168.0.12:45455/api/loads1/";
+                //  var json = JsonConvert.SerializeObject(makebid);
+                // var resp = new StringContent(json, Encoding.UTF8, "application/json");
+                //var response = client.GetAsync(url, resp).Result;
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/loads1?location="+_adress);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode==HttpStatusCode.OK)
+                {
+                    var result = JsonConvert.DeserializeObject<object>(responseBody);
+                    //MainPage.bid=true;
+                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
+                }
+
+                else
+                {
+                    //MainPage.refuse=true;
+                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
+                }
+
+
+
+
+            }
+            catch (Exception)
+            {
+                //MainPage.refuse=true;
+                //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
+            }
+
+
+
 
         }
 
@@ -176,6 +228,7 @@ namespace App13
                 var possibleAddresses = await geocoder.GetAddressesForPositionAsync(pos);
 
                 currentLocation.Text=possibleAddresses.FirstOrDefault();
+                _adress=possibleAddresses.FirstOrDefault();
                 currentLocationName.Text="Ваше местоположение:";
 
                 HttpClient client = new HttpClient();
