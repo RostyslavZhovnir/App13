@@ -18,7 +18,7 @@ namespace App13
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Notification : ContentPage
 	{
-		private string _username;
+		public  string _username;
 		private string _pass;
 		private string _secKey;
 		private string _loadID;
@@ -64,7 +64,7 @@ namespace App13
             MainPage.intransit=false;
             MainPage.refuse=false;
 
-          App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+          App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass,_loadID));
 		}
 
 		private void _submit(object sender, EventArgs e)
@@ -84,14 +84,14 @@ namespace App13
 				{
 
 					MainPage.bid=true;
-					App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+					App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass,_loadID));
 
 				}
 
 				else
 				{
 					MainPage.refuse=true;
-					App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+					App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass,_loadID));
 
 				}
 
@@ -102,7 +102,7 @@ namespace App13
 			catch (Exception)
 			{
 				MainPage.refuse =true;
-				App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+				App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass,_loadID));
 
 			}
 

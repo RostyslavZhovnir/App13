@@ -17,7 +17,8 @@ namespace App13
 	public partial class Login : ContentPage
 	{
         public static string seckey ;
-		public Login ()
+       
+        public Login ()
 		{
 			InitializeComponent ();
 
@@ -46,10 +47,11 @@ namespace App13
 
                 if (response.StatusCode==HttpStatusCode.OK)
                 {
-
+                  
+                    
                     //MainPage mainPage = new MainPage();
                     //await Navigation.PushAsync(new MainPage(loginEntry.Text, passwordEntry.Text));
-                    App.Current.MainPage=new NavigationPage(new MainPage(loginEntry.Text, passwordEntry.Text));
+                    App.Current.MainPage=new NavigationPage(new MainPage(loginEntry.Text, passwordEntry.Text,null));
                     //mainPage.tempData(loginEntry.Text, passwordEntry.Text);
                     //await Navigation.PushAsync(mainPage);
 

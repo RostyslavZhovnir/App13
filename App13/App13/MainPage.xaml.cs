@@ -5,6 +5,7 @@ using Plugin.Geolocator.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,23 +19,28 @@ namespace App13
     {
         private string _pass;
         private string _name;
+        private string _loadid;
         public static bool bid;
         public static bool refuse;
         public static bool intransit;
-        public MainPage(string name, string pass)
+        public MainPage(string name, string pass,string loadid)
         {
             InitializeComponent();
-            readyForPickup.Clicked+=ReadyForPickup_Clicked;
+            
             offline.IsVisible=false;
             pending.IsVisible=false;
+            delivered.IsVisible=false;
 
+            readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.Clicked+=Offline_Clicked;
+            delivered.Clicked+=Delivered_Clicked;
             currentLocationName.Text="Вы Offline";
             message.Text="";
             username.Text="Welcome back, "+name;
             currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
             _name=name;
             _pass=pass;
+            _loadid=loadid;
             if (refuse==true)
             {
                 bid=false;
@@ -68,9 +74,56 @@ namespace App13
                 currentLocation.Text="После того как выполните доставку нажмите 'Груз доставлен' ";
                 currentLocationName.Text="Запрос подтвержден!!"+Environment.NewLine+" Ожидайте звонка диспетчера в ближайшее время";
                 offline.IsVisible=false;
-                readyForPickup.IsVisible=true;
-                readyForPickup.Text="Груз доставлен";
+                readyForPickup.IsVisible=false;
+                delivered.IsVisible=true;
                 pending.IsVisible=false;
+            }
+
+        }
+
+        private void Delivered_Clicked(object sender, EventArgs e)
+        {
+            readyForPickup.IsVisible=true;
+             delivered.IsVisible=false;
+            offline.IsVisible=false;
+            currentLocationName.Text="Доставка оформленна!";
+            currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
+            message.Text="";
+            try
+            {
+
+                HttpClient client = new HttpClient();
+                var makebid = new bid { userName=_name, userKey=_pass, currentbid="Delivered", loadID=_loadid };
+                string url = "http://192.168.0.12:45455/api/loads1/";
+                var json = JsonConvert.SerializeObject(makebid);
+                var resp = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.PutAsync(url, resp).Result;
+
+
+                if (response.StatusCode==HttpStatusCode.OK)
+                {
+
+                    //MainPage.bid=true;
+                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
+                }
+
+                else
+                {
+                    //MainPage.refuse=true;
+                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
+                }
+
+
+
+
+            }
+            catch (Exception)
+            {
+                //MainPage.refuse=true;
+                //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
             }
 
         }

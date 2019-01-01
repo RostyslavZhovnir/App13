@@ -37,14 +37,14 @@ namespace App13.Droid
             if (messag=="Rejected")
             {
                 MainPage.refuse=true;
-                App.Current.MainPage=new NavigationPage(new MainPage(userName, pass));
+                App.Current.MainPage=new NavigationPage(new MainPage(userName, pass,loadID));
             }
             else if (messag=="InTransit")
             {
                 MainPage.refuse=false;
                 MainPage.bid=false;
                 MainPage.intransit=true;
-                App.Current.MainPage=new NavigationPage(new MainPage(userName, pass));
+                App.Current.MainPage=new NavigationPage(new MainPage(userName, pass,loadID));
             }
 
             else
