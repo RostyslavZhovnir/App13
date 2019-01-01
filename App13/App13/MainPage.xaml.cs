@@ -34,9 +34,9 @@ namespace App13
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
             currentLocationName.Text="Вы Offline";
-            message.Text="";
+            
             username.Text="Welcome back, "+name;
-            currentLocation.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
+            message.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
             _name=name;
             _pass=pass;
             _loadid=loadid;
@@ -72,8 +72,8 @@ namespace App13
                 currentLocation.Text="";
 
                 //username.Text="Welcome back, "+name;
-                message.Text="После того как выполните доставку нажмите :"+Environment.NewLine+" 'Доставлено' ";
-                currentLocationName.Text="Запрос подтвержден!!"+Environment.NewLine+" Ожидайте звонка диспетчера в ближайшее время";
+                message.Text="Ожидайте звонка диспетчера в ближайшее время"+Environment.NewLine+"После того как выполните доставку нажмите :"+Environment.NewLine+" 'Доставлено' ";
+                currentLocationName.Text="Запрос подтвержден!!";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=false;
                 delivered.IsVisible=true;
