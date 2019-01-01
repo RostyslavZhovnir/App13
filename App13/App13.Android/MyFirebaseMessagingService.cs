@@ -34,14 +34,22 @@ namespace App13.Droid
             string loadID = result[3];
             string userKey = result[4];
             //App.Current.Navigation.PushAsync(new Notification(msg));
-            if (messag=="InTransit")
+            if (messag=="Rejected")
             {
                 MainPage.refuse=true;
+                App.Current.MainPage=new NavigationPage(new MainPage(userName, pass));
+            }
+            else if (messag=="InTransit")
+            {
+                MainPage.refuse=false;
+                MainPage.bid=false;
+                MainPage.intransit=true;
                 App.Current.MainPage=new NavigationPage(new MainPage(userName, pass));
             }
 
             else
             {
+                MainPage.intransit=false;
                 App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass, userKey, loadID));
 
                 //Log.Debug(TAG, "Notification Message Body: "+message.GetNotification().Body);

@@ -20,6 +20,7 @@ namespace App13
         private string _name;
         public static bool bid;
         public static bool refuse;
+        public static bool intransit;
         public MainPage(string name, string pass)
         {
             InitializeComponent();
@@ -36,9 +37,11 @@ namespace App13
             _pass=pass;
             if (refuse==true)
             {
+                bid=false;
+                intransit=false;
                 currentLocationName.Text="К сожалению , ваше предложение цены отклонено!!";
                 message.Text="";
-                username.Text="Welcome back, "+name;
+               // username.Text="Welcome back, "+name;
                 currentLocation.Text="Для начала работы нажмите 'Готов к загрузке'";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=true;
@@ -46,14 +49,30 @@ namespace App13
             }
             if (bid==true)
             {
+                intransit=false;
+                refuse=false;
                 currentLocationName.Text="Запрос принят!";
                 message.Text="";
-                username.Text=name+", Ваш запрос обрабатывается ";
+               // username.Text=name+", Ваш запрос обрабатывается ";
                 currentLocation.Text="Для отмены звоните диспетчеру";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=false;
                 pending.IsVisible=true;
             }
+            if (intransit==true)
+            {
+                bid=false;
+                refuse=false;
+                message.Text="";
+                //username.Text="Welcome back, "+name;
+                currentLocation.Text="После того как выполните доставку нажмите 'Груз доставлен' ";
+                currentLocationName.Text="Запрос подтвержден!!"+Environment.NewLine+" Ожидайте звонка диспетчера в ближайшее время";
+                offline.IsVisible=false;
+                readyForPickup.IsVisible=true;
+                readyForPickup.Text="Груз доставлен";
+                pending.IsVisible=false;
+            }
+
         }
 
         private void Offline_Clicked(object sender, EventArgs e)
@@ -75,7 +94,7 @@ namespace App13
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
         {
 
-
+            
             //await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
             offline.IsVisible=true;
             readyForPickup.IsVisible=false;

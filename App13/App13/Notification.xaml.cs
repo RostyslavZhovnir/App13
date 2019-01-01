@@ -60,8 +60,11 @@ namespace App13
 
 		private void _cancel(object sender, EventArgs e)
 		{
+            MainPage.bid=false;
+            MainPage.intransit=false;
+            MainPage.refuse=false;
 
-			App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+          App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
 		}
 
 		private void _submit(object sender, EventArgs e)
