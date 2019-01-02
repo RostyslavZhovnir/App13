@@ -24,7 +24,7 @@ namespace App13.Droid
         const string TAG = "MyFirebaseMsgService";
         public override void OnMessageReceived(RemoteMessage message)
         {
-            Log.Debug(TAG, "From: "+message.From);
+            //Log.Debug(TAG, "From: "+message.From);
 
             var msg = message.Data["message"];
             string[] result = msg.Split("&&");
@@ -61,9 +61,11 @@ namespace App13.Droid
                 }
 
                 manager.Notify(0, builder.Build());
+                Login.online=true;
             }
             else if (messag=="InTransit")
             {
+                Login.online=false;
                 MainPage.refuse=false;
                 MainPage.bid=false;
                 MainPage.intransit=true;
@@ -94,7 +96,8 @@ namespace App13.Droid
 
             }
 
-            else
+            else if (Login.online==true)
+     
             {
                 MainPage.intransit=false;
                 App.Current.MainPage=new NavigationPage(new Notification(messag, userName, pass, userKey, loadID));

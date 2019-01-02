@@ -17,6 +17,7 @@ namespace App13
 	public partial class Login : ContentPage
 	{
         public static string seckey ;
+        public static bool online;
        
         public Login ()
 		{
@@ -47,7 +48,7 @@ namespace App13
 
                 if (response.StatusCode==HttpStatusCode.OK)
                 {
-                  
+                    online=true;
                     
                     //MainPage mainPage = new MainPage();
                     //await Navigation.PushAsync(new MainPage(loginEntry.Text, passwordEntry.Text));
@@ -60,6 +61,7 @@ namespace App13
                 else
                 {
                     loginfail.IsVisible=true;
+                    online=false;
                 }
 
 

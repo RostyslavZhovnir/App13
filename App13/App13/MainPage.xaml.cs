@@ -37,6 +37,7 @@ namespace App13
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
             orderslist.Clicked+=Orderslist_ClickedAsync;
+            Login.online=false;
             currentLocationName.Text="Вы Offline";
             
             username.Text="Welcome back, "+name;
@@ -46,6 +47,7 @@ namespace App13
             _loadid=loadid;
             if (refuse==true)
             {
+                Login.online=true;
                 bid=false;
                 intransit=false;
                 currentLocationName.Text="К сожалению ,"+Environment.NewLine+" ваше предложение цены отклонено!!";
@@ -59,6 +61,7 @@ namespace App13
             }
             if (bid==true)
             {
+                Login.online=false;
                 intransit=false;
                 refuse=false;
                 currentLocationName.Text="Запрос принят!";
@@ -71,6 +74,7 @@ namespace App13
             }
             if (intransit==true)
             {
+                Login.online=false;
                 bid=false;
                 refuse=false;
                 currentLocation.Text="";
@@ -152,6 +156,7 @@ namespace App13
 
         private void Delivered_Clicked(object sender, EventArgs e)
         {
+            Login.online=true;
             readyForPickup.IsVisible=true;
              delivered.IsVisible=false;
             offline.IsVisible=false;
@@ -197,7 +202,7 @@ namespace App13
 
         private void Offline_Clicked(object sender, EventArgs e)
         {
-           
+            Login.online=false;
             readyForPickup.IsVisible=true;
             offline.IsVisible=false;
             orderslist.IsVisible=false;
@@ -216,8 +221,8 @@ namespace App13
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
         {
 
-            
-         
+
+            Login.online=true;
             offline.IsVisible=true;
             orderslist.IsVisible=true;
             readyForPickup.IsVisible=false;
