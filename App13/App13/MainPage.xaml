@@ -46,16 +46,7 @@
 
 
 
-        <!--<Label Text="Longitude"  
-                       FontSize="10"  
-                      />
-        <Label x:Name="LogitudeLabel"  
-                       FontSize="10"/>
-        <Label Text="Latitude"  
-                       FontSize="10"  
-                        />
-        <Label x:Name="LatitudeLabel"   
-                       FontSize="10"/>-->
+      
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
            
             <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />

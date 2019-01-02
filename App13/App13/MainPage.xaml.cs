@@ -92,6 +92,8 @@ namespace App13
             {
                 lst.IsVisible=false;
                 orderslist.Text="Показать Список грузов";
+                message.Text="Все готово!! Система ищет грузы для вас в радиусе 150 миль. Ждите автоматические уведомления на ваш телефон.";
+
             }
             else
             {
@@ -172,16 +174,13 @@ namespace App13
                 if (response.StatusCode==HttpStatusCode.OK)
                 {
 
-                    //MainPage.bid=true;
-                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+                   
 
                 }
 
                 else
                 {
-                    //MainPage.refuse=true;
-                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
-
+                   
                 }
 
 
@@ -190,8 +189,7 @@ namespace App13
             }
             catch (Exception)
             {
-                //MainPage.refuse=true;
-                //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+               
 
             }
 
@@ -199,7 +197,7 @@ namespace App13
 
         private void Offline_Clicked(object sender, EventArgs e)
         {
-            // await DisplayAlert("Вы Offline", "Спасибо за огромный труд! Поскорее возвращайтесь !!", "Подтвердить");
+           
             readyForPickup.IsVisible=true;
             offline.IsVisible=false;
             orderslist.IsVisible=false;
@@ -219,7 +217,7 @@ namespace App13
         {
 
             
-            //await DisplayAlert("Вы Online", "Следите за уведомлениями с грузами вокруг вас, удачной работы !!", "Подтвердить");
+         
             offline.IsVisible=true;
             orderslist.IsVisible=true;
             readyForPickup.IsVisible=false;
@@ -233,8 +231,7 @@ namespace App13
             try {
 
                 var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
-                //LogitudeLabel.Text=position.Longitude.ToString();
-                //LatitudeLabel.Text=position.Latitude.ToString();
+              
 
                 Geocoder geocoder = new Geocoder();
                 var pos = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
