@@ -101,6 +101,10 @@ namespace App13
             if (lst.IsVisible==true)
             {
                 lst.IsVisible=false;
+                currentLocationName.IsVisible=true;
+                currentLocation.IsVisible=true;
+                username.IsVisible=true;
+                message.IsVisible=true;
                 orderslist.Text="Показать Список грузов";
                 message.Text="Все готово!! Система ищет грузы для вас в радиусе 150 миль. Ждите автоматические уведомления на ваш телефон.";
 
@@ -112,7 +116,10 @@ namespace App13
                 try
                 {
                     orderslist.Text="Спрятать список грузов";
-                    message.IsVisible=false; 
+                    message.IsVisible=false;
+                    currentLocationName.IsVisible=false;
+                    currentLocation.IsVisible=false;
+                    username.IsVisible=false;
                     HttpClient client = new HttpClient();
                     HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/loads1?location="+_adress);
                     response.EnsureSuccessStatusCode();
