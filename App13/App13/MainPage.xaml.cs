@@ -36,6 +36,7 @@ namespace App13
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
+            myname.Clicked+=Myname_Clicked;
             orderslist.Clicked+=Orderslist_ClickedAsync;
             Login.online=false;
             currentLocationName.Text="Вы Offline";
@@ -88,6 +89,11 @@ namespace App13
                 pending.IsVisible=false;
             }
 
+        }
+        private void Myname_Clicked(object sender, EventArgs e)
+        {
+            var uri = new Uri("https://www.instagram.com/rostyslavzhovnir/");
+            Device.OpenUri(uri);
         }
 
         private async void Orderslist_ClickedAsync(object sender, EventArgs e)

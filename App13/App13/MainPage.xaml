@@ -63,6 +63,11 @@
         <Button x:Name="delivered" Text="Доставлено" BackgroundColor="Blue" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
       
         <Button x:Name="pending" Text="Ждите ответа" BackgroundColor="Orange" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+
+        <Button x:Name="myname" StyleClass = "Link" Text="Created by Rostyslav Zhovnir"
+                VerticalOptions="CenterAndExpand" BackgroundColor="#fafafa"
+                HorizontalOptions="CenterAndExpand" FontSize="8" FontAttributes="Bold" />
+
     </StackLayout>
 
  

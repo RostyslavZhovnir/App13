@@ -25,9 +25,16 @@ namespace App13
 
 			login.Clicked+=login_Clicked;
 			loginfail.IsVisible=false;
+            myname.Clicked+=Myname_Clicked;
 
 
 		}
+
+        private void Myname_Clicked(object sender, EventArgs e)
+        {
+            var uri = new Uri("https://www.instagram.com/rostyslavzhovnir/");
+            Device.OpenUri(uri);
+        }
 
         private void login_Clicked(object sender, EventArgs e)
         {

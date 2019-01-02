@@ -4,9 +4,9 @@
              x:Class="App13.Login">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Bakun Express Load Tracker!"
+            <Label Text="Welcome to Bakun Express Load Tracker"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
             <Entry x:Name="loginEntry"  Placeholder = "Логин"/>
             <Entry x:Name="passwordEntry"  Placeholder = "Пароль" IsPassword ="True" />
             <Label x:Name="textLabel" FontSize="Large" />
@@ -14,8 +14,11 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" TextColor="Red" />
             <Button x:Name="login" Text="Login" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-           
-       
+
+            <Button x:Name="myname" StyleClass = "Link" Text="Created by Rostyslav Zhovnir"
+                VerticalOptions="CenterAndExpand" BackgroundColor="#fafafa"
+                HorizontalOptions="CenterAndExpand" FontSize="8" FontAttributes="Bold" />
+
         </StackLayout>
 
        
