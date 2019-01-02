@@ -7,6 +7,7 @@
              >
 
     <StackLayout>
+     
         <!-- Place new controls here -->
 
         <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
@@ -24,7 +25,24 @@
                        FontSize="15"/>
         </StackLayout>
 
+        <ListView x:Name="lst" ItemSelected="lst_ItemSelected"  HasUnevenRows="True">
 
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Padding="10,20,10,0">
+                                <Label Text="{Binding pickupfrom } "  TextColor="Black"/>
+                                <Label Text="{Binding deliveryto}"  TextColor="Black"/>
+                                <Label Text="{Binding pickupdate}"  TextColor="Blue" />
+                                <Label Text="{Binding deliverydate}" TextColor="Blue"/>
+                                <Label Text="{Binding weightpcs}"  TextColor="Black" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
 
 
@@ -39,11 +57,15 @@
         <Label x:Name="LatitudeLabel"   
                        FontSize="10"/>-->
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-
+           
             <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-            <Button x:Name="orderslist" Text="Список грузов" BackgroundColor="Green" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            <Button x:Name="orderslist" Text="Показать Список грузов" BackgroundColor="Green" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
 
+       
+        
         </StackLayout>
+
+      
 
         <Button x:Name="readyForPickup" Text="Готов к загрузке"  BackgroundColor="Green" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
       
@@ -51,5 +73,8 @@
       
         <Button x:Name="pending" Text="Ждите ответа" BackgroundColor="Orange" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
     </StackLayout>
+
+ 
+
 
 </ContentPage>

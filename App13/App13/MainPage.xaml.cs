@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -27,6 +28,7 @@ namespace App13
         public MainPage(string name, string pass,string loadid)
         {
             InitializeComponent();
+            lst.IsVisible=false;
             offline.IsVisible=false;
             pending.IsVisible=false;
             delivered.IsVisible=false;
@@ -86,35 +88,49 @@ namespace App13
 
         private async void Orderslist_ClickedAsync(object sender, EventArgs e)
         {
-        
-
-
-            try
+            if (lst.IsVisible==true)
+            {
+                lst.IsVisible=false;
+                orderslist.Text="Показать Список грузов";
+            }
+            else
             {
 
-                // HttpClient client = new HttpClient();
-                //var makebid = new bid { userName=_name, userKey=_pass, currentbid="Delivered", loadID=_loadid };
-                // string url = "http://192.168.0.12:45455/api/loads1/";
-                //  var json = JsonConvert.SerializeObject(makebid);
-                // var resp = new StringContent(json, Encoding.UTF8, "application/json");
-                //var response = client.GetAsync(url, resp).Result;
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/loads1?location="+_adress);
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
 
-                if (response.StatusCode==HttpStatusCode.OK)
+                try
                 {
-                    var result = JsonConvert.DeserializeObject<object>(responseBody);
-                    //MainPage.bid=true;
-                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+                    orderslist.Text="Спрятать список грузов";
+                    message.IsVisible=false; 
+                    HttpClient client = new HttpClient();
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/loads1?location="+_adress);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    if (response.StatusCode==HttpStatusCode.OK)
+                    {
+                        lst.IsVisible=true;
+                        //var result = JsonConvert.DeserializeObject<object>(responseBody);
+                        var result = JsonConvert.DeserializeObject<IEnumerable<loads>>(responseBody);
+                        lst.ItemsSource=result;
+
+
+                    }
+
+
+
+                    else
+                    {
+
+
+                    }
+
+
+
 
                 }
-
-                else
+                catch (Exception)
                 {
-                    //MainPage.refuse=true;
-                    //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+
 
                 }
 
@@ -122,16 +138,14 @@ namespace App13
 
 
             }
-            catch (Exception)
-            {
-                //MainPage.refuse=true;
-                //App.Current.MainPage=new NavigationPage(new MainPage(_username, _pass));
+        }
 
-            }
-
-
-
-
+        private void lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selecteditem = e.SelectedItem as loads;
+            string message = null+"%%"+selecteditem.pickupfrom+"%%"+selecteditem.deliveryto+"%%"+selecteditem.weightpcs+"%%"+selecteditem.totalmiles+"%%"+selecteditem.pickupdate+"%%"+selecteditem.deliverydate;
+            var refreshedToken = Login.seckey;
+            App.Current.MainPage=new NavigationPage(new Notification(message, _name, _pass, refreshedToken, selecteditem.id.ToString()));
         }
 
         private void Delivered_Clicked(object sender, EventArgs e)
