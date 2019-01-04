@@ -57,7 +57,8 @@
                     <ViewCell>
                         <ViewCell.View>
                             <StackLayout Padding="10,20,10,0">
-                                
+
+                                <Label Text="{Binding finalprice}"  />
                                 <Label Text="{Binding pickupfrom}"  />
                                 <Label Text="{Binding deliveryto}"  />
                                 <Label Text="{Binding pickupdate}"  />
