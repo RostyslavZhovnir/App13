@@ -29,6 +29,7 @@ namespace App13
         {
             InitializeComponent();
             lst.IsVisible=false;
+            emptylst.IsVisible=false;
             offline.IsVisible=false;
             pending.IsVisible=false;
             delivered.IsVisible=false;
@@ -36,90 +37,85 @@ namespace App13
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
-            myname.Clicked+=Myname_Clicked;
+          
             orderslist.Clicked+=Orderslist_ClickedAsync;
-            Login.online=false;
-            currentLocationName.Text="Вы Offline";
+           // Login.online=false;
+          //  currentLocationName.Text="Вы Offline";
             
             username.Text="Welcome back, "+name;
-            message.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
+           // message.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
+
             _name=name;
             _pass=pass;
             _loadid=loadid;
             if (refuse==true)
             {
+                username.IsVisible=false;
                 Login.online=true;
                 bid=false;
                 intransit=false;
-                currentLocationName.Text="К сожалению ,"+Environment.NewLine+" ваше предложение цены отклонено!!";
+                //currentLocationName.Text="К сожалению ,"+Environment.NewLine+" ваше предложение цены отклонено!!";
                 //message.Text="";
                 // username.Text="Welcome back, "+name;
                 currentLocation.Text="";
-                message.Text="Для начала работы нажмите "+Environment.NewLine+"'Готов к загрузке'";
+               // message.Text="Для начала работы нажмите "+Environment.NewLine+"'Готов к загрузке'";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=true;
+                readyForPickup.Text="Ваше предложение цены отклонено!!"+Environment.NewLine+"Для продолжения нажмите тут";
                 pending.IsVisible=false;
             }
-            if (bid==true)
+            else if (bid==true)
             {
+                username.IsVisible=false;
                 Login.online=false;
                 intransit=false;
                 refuse=false;
-                currentLocationName.Text="Запрос принят!";
-                currentLocation.Text="";
+             
                 // username.Text=name+", Ваш запрос обрабатывается ";
-                message.Text="Для отмены звоните диспетчеру";
+              
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=false;
                 pending.IsVisible=true;
+                pending.Text="Запрос принят!"+Environment.NewLine+ "Для отмены звоните диспетчеру или ожидайте";
             }
-            if (intransit==true)
+            else if (intransit==true)
             {
+                username.IsVisible=false;
                 Login.online=false;
                 bid=false;
                 refuse=false;
-                currentLocation.Text="";
-
+               
                 //username.Text="Welcome back, "+name;
-                message.Text="Ожидайте звонка диспетчера в ближайшее время"+Environment.NewLine+"После того как выполните доставку нажмите :"+Environment.NewLine+" 'Доставлено' ";
-                currentLocationName.Text="Запрос подтвержден!!";
+               // message.Text="Ожидайте звонка диспетчера в ближайшее время"+Environment.NewLine+"После того как выполните доставку нажмите :"+Environment.NewLine+" 'Доставлено' ";
+               // currentLocationName.Text="!";
                 offline.IsVisible=false;
                 readyForPickup.IsVisible=false;
                 delivered.IsVisible=true;
+                delivered.Text="Запрос подтвержден!"+Environment.NewLine+"После выполнения доставки нажмите сюда";
                 pending.IsVisible=false;
             }
 
+            else
+            {
+
+                onlineAsync();
+
+
+            }
+
         }
-        private void Myname_Clicked(object sender, EventArgs e)
-        {
-            var uri = new Uri("https://www.instagram.com/rostyslavzhovnir/");
-            Device.OpenUri(uri);
-        }
+       
 
         private async void Orderslist_ClickedAsync(object sender, EventArgs e)
         {
-            if (lst.IsVisible==true)
-            {
-                lst.IsVisible=false;
-                currentLocationName.IsVisible=true;
-                currentLocation.IsVisible=true;
-                username.IsVisible=true;
-                message.IsVisible=true;
-                orderslist.Text="Показать Список грузов";
-                message.Text="Все готово!! Система ищет грузы для вас в радиусе 150 миль. Ждите автоматические уведомления на ваш телефон.";
-
-            }
-            else
-            {
+           
+           
 
 
                 try
                 {
-                    orderslist.Text="Спрятать список грузов";
-                    message.IsVisible=false;
-                    currentLocationName.IsVisible=false;
-                    currentLocation.IsVisible=false;
-                    username.IsVisible=false;
+
+
                     HttpClient client = new HttpClient();
                     HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/loads1?location="+_adress);
                     response.EnsureSuccessStatusCode();
@@ -134,19 +130,27 @@ namespace App13
 
 
                     }
+                if (response.StatusCode==HttpStatusCode.NoContent)
+                {
+                    lst.IsVisible=false;
+                    //var result = JsonConvert.DeserializeObject<object>(responseBody);
 
+                    emptylst.IsVisible=true;
+                    emptylst.Text="Пока список пуст..";
 
-
-                    else
-                    {
-
-
-                    }
-
-
+                       
 
 
                 }
+
+
+
+
+
+
+
+
+            }
                 catch (Exception)
                 {
 
@@ -156,7 +160,7 @@ namespace App13
 
 
 
-            }
+            
         }
 
         private void lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -169,15 +173,14 @@ namespace App13
 
         private void Delivered_Clicked(object sender, EventArgs e)
         {
+            username.IsVisible=false;
             Login.online=true;
             readyForPickup.IsVisible=true;
              delivered.IsVisible=false;
             offline.IsVisible=false;
             orderslist.IsVisible=false;
-
-            currentLocationName.Text="Доставка оформленна!";
-            currentLocation.Text="Для начала работы нажмите"+Environment.NewLine+" 'Готов к загрузке'";
-            message.Text="";
+            readyForPickup.Text="Доставка оформленна!"+Environment.NewLine+"Для начала работы нажмите сюда";
+           
             try
             {
 
@@ -189,17 +192,17 @@ namespace App13
                 var response = client.PutAsync(url, resp).Result;
 
 
-                if (response.StatusCode==HttpStatusCode.OK)
-                {
+                //if (response.StatusCode==HttpStatusCode.OK)
+                //{
 
                    
 
-                }
+                //}
 
-                else
-                {
+                //else
+                //{
                    
-                }
+                //}
 
 
 
@@ -215,13 +218,18 @@ namespace App13
 
         private void Offline_Clicked(object sender, EventArgs e)
         {
+            message.Text="";
+            username.IsVisible=false;
             Login.online=false;
             readyForPickup.IsVisible=true;
             offline.IsVisible=false;
             orderslist.IsVisible=false;
-            currentLocationName.Text="Вы Offline";
+            currentLocationName.Text="";
             currentLocation.Text="";
-            message.Text="Для начала работы нажмите "+Environment.NewLine+"'Готов к загрузке'";
+
+            readyForPickup.Text="Вы Offline"+Environment.NewLine+"Для начала работы нажмите сюда ";
+            
+         
            
             HttpClient client = new HttpClient();
             var user = new userLogin { name=_name, pass=_pass, location="USER OFFLINE" };
@@ -241,7 +249,7 @@ namespace App13
             readyForPickup.IsVisible=false;
             currentLocationName.Text="";
             currentLocation.Text="";
-            message.Text="Все готово!! Система ищет грузы для вас в радиусе 150 миль. Ждите автоматические уведомления на ваш телефон.";
+            message.Text="Все готово!! Система ищет грузы для вас в радиусе 100 миль. Ждите автоматические уведомления на ваш телефон.";
 
             var locator =  CrossGeolocator.Current;
             
@@ -276,6 +284,51 @@ namespace App13
            
            
 
+
+
+        }
+
+        private async void onlineAsync() {
+            Login.online=true;
+            offline.IsVisible=true;
+            orderslist.IsVisible=true;
+            readyForPickup.IsVisible=false;
+            currentLocationName.Text="";
+            currentLocation.Text="";
+            message.Text="Система ищет грузы для вас в радиусе 100 миль. Ждите автоматические уведомления или нажмите 'Oбновить список'";
+
+            var locator =  CrossGeolocator.Current;
+            
+            locator.DesiredAccuracy=100;
+            try {
+
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(20000));
+              
+
+                Geocoder geocoder = new Geocoder();
+                var pos = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
+
+                var possibleAddresses = await geocoder.GetAddressesForPositionAsync(pos);
+
+                currentLocation.Text=possibleAddresses.FirstOrDefault();
+                _adress=possibleAddresses.FirstOrDefault();
+                currentLocationName.Text="Ваше местоположение:";
+
+                HttpClient client = new HttpClient();
+                var user = new userLogin { name=_name, pass=_pass,location =possibleAddresses.FirstOrDefault() };
+                string url = "http://192.168.0.12:45455/api/users1/";
+                var json = JsonConvert.SerializeObject(user);
+                var resp = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.PostAsync(url, resp).Result;
+
+
+            }
+            catch (Exception) {
+
+                currentLocationName.Text="Нет сигнала GPS";
+            }
+           
+           
 
 
         }

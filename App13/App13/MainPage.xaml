@@ -3,28 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:App13"
              x:Class="App13.MainPage"
-              Title="Bakun Express Load Tracker"
+              Title="Load Tracker"
              >
 
     <StackLayout>
      
         <!-- Place new controls here -->
 
-        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-            <Label x:Name="username"
-           HorizontalOptions="Center"
+        <StackLayout >
+            <Label x:Name="username" HorizontalOptions="Center"
+         
            
-              FontSize="17"  HorizontalTextAlignment="End" />
+              FontSize="15"  TextColor="Black"/>
 
         <Label x:Name="currentLocationName"   HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red"
-                       FontSize="17"/>
+                       FontSize="15"/>
         <Label x:Name="currentLocation" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Red"
-                       FontSize="17"/>
+                       FontSize="15"/>
 
         <Label x:Name="message" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                       FontSize="15"/>
+                       FontSize="14"/>
         </StackLayout>
 
+       
+
+
+
+      
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+           
+            <Button x:Name="offline" Text="Стать Offline" BackgroundColor="red" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Button x:Name="orderslist" Text="Oбновить список" BackgroundColor="Green" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+
+       
+        
+        </StackLayout>
+
+
+
+        <Button x:Name="readyForPickup"  BackgroundColor="Green" TextColor="White" WidthRequest="300" HeightRequest="300" BorderRadius="150" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+
+        <Button x:Name="delivered"  BackgroundColor="Blue" TextColor="White" WidthRequest="300" HeightRequest="300" BorderRadius="150" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+
+        <Button x:Name="pending"  BackgroundColor="Orange" TextColor="White" WidthRequest="300" HeightRequest="300" BorderRadius="150" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+
+
+        <Label x:Name="emptylst" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                       FontSize="10"/>
         <ListView x:Name="lst" ItemSelected="lst_ItemSelected"  HasUnevenRows="True">
 
             <ListView.ItemTemplate>
@@ -32,11 +57,13 @@
                     <ViewCell>
                         <ViewCell.View>
                             <StackLayout Padding="10,20,10,0">
-                                <Label Text="{Binding pickupfrom } "  TextColor="Black"/>
-                                <Label Text="{Binding deliveryto}"  TextColor="Black"/>
-                                <Label Text="{Binding pickupdate}"  TextColor="Blue" />
-                                <Label Text="{Binding deliverydate}" TextColor="Blue"/>
-                                <Label Text="{Binding weightpcs}"  TextColor="Black" />
+                                
+                                <Label Text="{Binding pickupfrom}"  />
+                                <Label Text="{Binding deliveryto}"  />
+                                <Label Text="{Binding pickupdate}"  />
+                                <Label Text="{Binding deliverydate}" />
+                                <Label Text="{Binding weightpcs}"  />
+                               
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
@@ -44,29 +71,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-
-
-      
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-           
-            <Button x:Name="offline" Text="Стать Оффлайн" BackgroundColor="red" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-            <Button x:Name="orderslist" Text="Показать Список грузов" BackgroundColor="Green" TextColor="White" WidthRequest="150" HeightRequest="150" BorderRadius="75" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-
-       
-        
-        </StackLayout>
-
-      
-
-        <Button x:Name="readyForPickup" Text="Готов к загрузке"  BackgroundColor="Green" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-      
-        <Button x:Name="delivered" Text="Доставлено" BackgroundColor="Blue" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-      
-        <Button x:Name="pending" Text="Ждите ответа" BackgroundColor="Orange" TextColor="White" WidthRequest="200" HeightRequest="200" BorderRadius="100" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-
-        <Button x:Name="myname" StyleClass = "Link" Text="Created by Rostyslav Zhovnir"
-                VerticalOptions="CenterAndExpand" BackgroundColor="#fafafa"
-                HorizontalOptions="CenterAndExpand" FontSize="8" FontAttributes="Bold" />
 
     </StackLayout>
 
