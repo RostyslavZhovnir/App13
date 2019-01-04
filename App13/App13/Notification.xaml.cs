@@ -22,6 +22,7 @@ namespace App13
 		private string _pass;
 		private string _secKey;
 		private string _loadID;
+        private int _milesaway;
         string froms;
         string tos;
 		public Notification (string msg, string username, string userpass, string userkey, string loadid)
@@ -40,6 +41,11 @@ namespace App13
 
                 var result = msg.Split("%%".ToCharArray());
                 milestopickup.Text="Миль до загрузки: "+result[0];
+            if (result[0]!=null)
+            {
+                _milesaway=int.Parse(result[0]);
+
+            }
                 from.Text="From: "+result[2];
                 to.Text="To: "+result[4];
                 froms=result[2];
@@ -73,7 +79,7 @@ namespace App13
 			{
 			  
 				HttpClient client = new HttpClient();
-				var makebid = new bid { userName=_username, userKey=_secKey,currentbid=bid.Text,loadID=_loadID };
+				var makebid = new bid { userName=_username, userKey=_secKey,currentbid=bid.Text,loadID=_loadID,milesaway= _milesaway};
 				string url = "http://192.168.0.12:45455/api/loads1/";
 				var json = JsonConvert.SerializeObject(makebid);
 				var resp = new StringContent(json, Encoding.UTF8, "application/json");

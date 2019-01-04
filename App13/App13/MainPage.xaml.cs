@@ -34,6 +34,7 @@ namespace App13
             pending.IsVisible=false;
             delivered.IsVisible=false;
             orderslist.IsVisible=false;
+            username.IsVisible=true;
             readyForPickup.Clicked+=ReadyForPickup_Clicked;
             offline.Clicked+=Offline_Clicked;
             delivered.Clicked+=Delivered_Clicked;
@@ -166,7 +167,7 @@ namespace App13
         private void lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var selecteditem = e.SelectedItem as loads;
-            string message = null+"%%"+selecteditem.pickupfrom+"%%"+selecteditem.deliveryto+"%%"+selecteditem.weightpcs+"%%"+selecteditem.totalmiles+"%%"+selecteditem.pickupdate+"%%"+selecteditem.deliverydate;
+            string message = selecteditem.finalprice+"%%"+selecteditem.pickupfrom+"%%"+selecteditem.deliveryto+"%%"+selecteditem.weightpcs+"%%"+selecteditem.totalmiles+"%%"+selecteditem.pickupdate+"%%"+selecteditem.deliverydate;
             var refreshedToken = Login.seckey;
             App.Current.MainPage=new NavigationPage(new Notification(message, _name, _pass, refreshedToken, selecteditem.id.ToString()));
         }
@@ -242,7 +243,7 @@ namespace App13
         private async void ReadyForPickup_Clicked(object sender, EventArgs e)
         {
 
-
+            username.IsVisible=true;
             Login.online=true;
             offline.IsVisible=true;
             orderslist.IsVisible=true;

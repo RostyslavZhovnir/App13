@@ -10,5 +10,6 @@ namespace App13.Models
         public string userKey { get; set; }
         public string loadID { get; set; }
         public string currentbid { get; set; }
+        public Nullable<int> milesaway { get; set; }
     }
 }
