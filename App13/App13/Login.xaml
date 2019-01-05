@@ -6,7 +6,7 @@
         <StackLayout>
             <Label Text="Load Tracker"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="25" />
             <Entry x:Name="loginEntry"  Placeholder = "Логин"/>
             <Entry x:Name="passwordEntry"  Placeholder = "Пароль" IsPassword ="True" />
             <Label x:Name="textLabel" FontSize="Large" />

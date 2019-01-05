@@ -227,7 +227,7 @@ namespace App13
             orderslist.IsVisible=false;
             currentLocationName.Text="";
             currentLocation.Text="";
-
+            lst.IsVisible=false;
             readyForPickup.Text="Вы Offline"+Environment.NewLine+"Для начала работы нажмите сюда ";
             
          

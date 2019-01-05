@@ -56,16 +56,27 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout Padding="10,20,10,0">
+                            <Grid  Padding="15,2,2,15" Margin="10,15,2,15">
 
-                                <Label Text="{Binding finalprice}"  />
-                                <Label Text="{Binding pickupfrom}"  />
-                                <Label Text="{Binding deliveryto}"  />
-                                <Label Text="{Binding pickupdate}"  />
-                                <Label Text="{Binding deliverydate}" />
-                                <Label Text="{Binding weightpcs}"  />
+                                <Label Text="Миль до загрузки:" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding finalprice}"  Grid.Row="0" Grid.Column="1"/>
+                                
+                                <Label Text="From:" Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding pickupfrom}" Grid.Row="1" Grid.Column="1"  />
+                                
+                                <Label Text="To:" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding deliveryto}" Grid.Row="2" Grid.Column="1"  />
+                                
+                                <Label Text="Дата загрузки" Grid.Row="3" Grid.Column="0"/>
+                                <Label Text="{Binding pickupdate}"  Grid.Row="3" Grid.Column="1"/>
+                                
+                                <Label Text="Дата разгрузки" Grid.Row="4" Grid.Column="0"/>
+                                <Label Text="{Binding deliverydate}" Grid.Row="4" Grid.Column="1"/>
+                                
+                                <Label Text="Вес/количество" Grid.Row="5" Grid.Column="0"/>
+                                <Label Text="{Binding weightpcs}" Grid.Row="5" Grid.Column="1" />
                                
-                            </StackLayout>
+                            </Grid>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
