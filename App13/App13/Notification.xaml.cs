@@ -80,7 +80,7 @@ namespace App13
 			  
 				HttpClient client = new HttpClient();
 				var makebid = new bid { userName=_username, userKey=_secKey,currentbid=bid.Text,loadID=_loadID,milesaway= _milesaway};
-				string url = "http://192.168.0.12:45455/api/loads1/";
+				string url = "http://bakunexpress.com/api/loads1/";
 				var json = JsonConvert.SerializeObject(makebid);
 				var resp = new StringContent(json, Encoding.UTF8, "application/json");
 				var response = client.PutAsync(url, resp).Result;

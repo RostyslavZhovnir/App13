@@ -118,7 +118,7 @@ namespace App13
 
 
                     HttpClient client = new HttpClient();
-                    HttpResponseMessage response = await client.GetAsync("http://192.168.0.12:45455/api/loads1?location="+_adress);
+                    HttpResponseMessage response = await client.GetAsync("http://bakunexpress.com/api/loads1?location="+_adress);
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
 
@@ -187,7 +187,7 @@ namespace App13
 
                 HttpClient client = new HttpClient();
                 var makebid = new bid { userName=_name, userKey=_pass, currentbid="Delivered", loadID=_loadid };
-                string url = "http://192.168.0.12:45455/api/loads1/";
+                string url = "http://bakunexpress.com/api/loads1/";
                 var json = JsonConvert.SerializeObject(makebid);
                 var resp = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = client.PutAsync(url, resp).Result;
@@ -234,7 +234,7 @@ namespace App13
            
             HttpClient client = new HttpClient();
             var user = new userLogin { name=_name, pass=_pass, location="USER OFFLINE" };
-            string url = "http://192.168.0.12:45455/api/users1/";
+            string url = "http://bakunexpress.com/api/users1/";
             var json = JsonConvert.SerializeObject(user);
             var resp = new StringContent(json, Encoding.UTF8, "application/json");
             var response = client.PostAsync(url, resp).Result;
@@ -271,7 +271,7 @@ namespace App13
 
                 HttpClient client = new HttpClient();
                 var user = new userLogin { name=_name, pass=_pass,location =possibleAddresses.FirstOrDefault() };
-                string url = "http://192.168.0.12:45455/api/users1/";
+                string url = "http://bakunexpress.com/api/users1/";
                 var json = JsonConvert.SerializeObject(user);
                 var resp = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, resp).Result;
@@ -317,7 +317,7 @@ namespace App13
 
                 HttpClient client = new HttpClient();
                 var user = new userLogin { name=_name, pass=_pass,location =possibleAddresses.FirstOrDefault() };
-                string url = "http://192.168.0.12:45455/api/users1/";
+                string url = "http://bakunexpress.com/api/users1/";
                 var json = JsonConvert.SerializeObject(user);
                 var resp = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, resp).Result;

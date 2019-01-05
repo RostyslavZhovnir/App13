@@ -47,7 +47,7 @@ namespace App13
 
                 HttpClient client = new HttpClient();
                 var user = new userLogin { name=loginEntry.Text, pass=passwordEntry.Text,seckey=seckey };
-                string url = "http://192.168.0.12:45455/api/users1/";
+                string url = "http://bakunexpress.com/api/users1/";
                 var json = JsonConvert.SerializeObject(user);
                 var resp = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, resp).Result;
